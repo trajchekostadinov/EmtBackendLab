@@ -1,10 +1,16 @@
 package com.example.emtbackendlab.service.domain.impl;
 
 import com.example.emtbackendlab.model.domain.Book;
+import com.example.emtbackendlab.model.dto.DisplayBookListDto;
+import com.example.emtbackendlab.model.enumeration.BookCategory;
 import com.example.emtbackendlab.model.enumeration.BookState;
 import com.example.emtbackendlab.model.exception.BookNotAvailableException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.example.emtbackendlab.repository.BookRepository;
 import com.example.emtbackendlab.service.domain.BookService;
@@ -81,5 +87,26 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findById(bookId)
                 .map(Book::getAvailableCopies)
                 .orElse(0);
+    }
+
+    // lab2 - 1. za pagination
+    @Override
+    public Page<DisplayBookListDto> findAll(int page, int size, String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        return bookRepository.findAll(pageable).map(DisplayBookListDto::from);
+    }
+
+
+    @Override
+    public Page<DisplayBookListDto> listBooks(BookCategory category, BookState state, String authorName, Boolean available, int page, int size, String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+
+        int availableCopies = available != null && available ? 1 : 0;
+
+        Page<Book> books = bookRepository
+                .findByCategoryAndStateAndAuthorNameContainingAndAvailableCopiesGreaterThan(
+                        category, state, authorName != null ? authorName : "", availableCopies, pageable);
+
+        return books.map(DisplayBookListDto::from);
     }
 }

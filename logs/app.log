@@ -1,0 +1,36 @@
+2026-03-26T09:48:01.255+01:00  INFO 35163 --- [e-shop-backend] [main] c.e.e.EmtBackendLabApplication           : Starting EmtBackendLabApplication using Java 21.0.10 with PID 35163 (/Users/trajche/IdeaProjects/EmtBackendLab/target/classes started by trajche in /Users/trajche/IdeaProjects/EmtBackendLab)
+2026-03-26T09:48:01.256+01:00  INFO 35163 --- [e-shop-backend] [main] c.e.e.EmtBackendLabApplication           : The following 1 profile is active: "dev"
+2026-03-26T09:48:01.735+01:00  INFO 35163 --- [e-shop-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-26T09:48:01.735+01:00  INFO 35163 --- [e-shop-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2026-03-26T09:48:01.750+01:00  INFO 35163 --- [e-shop-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-26T09:48:01.830+01:00  INFO 35163 --- [e-shop-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-26T09:48:01.884+01:00  INFO 35163 --- [e-shop-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@40cf6254
+2026-03-26T09:48:01.885+01:00  INFO 35163 --- [e-shop-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-26T09:48:01.895+01:00  INFO 35163 --- [e-shop-backend] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5433/eshop (PostgreSQL 17.4)
+2026-03-26T09:48:01.923+01:00  INFO 35163 --- [e-shop-backend] [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.014s)
+2026-03-26T09:48:01.946+01:00  INFO 35163 --- [e-shop-backend] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
+2026-03-26T09:48:01.947+01:00  INFO 35163 --- [e-shop-backend] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-03-26T09:48:01.981+01:00  INFO 35163 --- [e-shop-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-26T09:48:02.001+01:00  INFO 35163 --- [e-shop-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2026-03-26T09:48:02.011+01:00  INFO 35163 --- [e-shop-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-26T09:48:02.117+01:00  INFO 35163 --- [e-shop-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-26T09:48:02.426+01:00  INFO 35163 --- [e-shop-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-26T09:48:02.634+01:00  WARN 35163 --- [e-shop-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-26T09:48:02.804+01:00  INFO 35163 --- [e-shop-backend] [main] c.e.e.EmtBackendLabApplication           : Started EmtBackendLabApplication in 1.677 seconds (process running for 7.092)
+2026-03-26T09:48:24.074+01:00  INFO 35163 --- [e-shop-backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-26T09:48:24.281+01:00  INFO 35163 --- [e-shop-backend] [http-nio-8080-exec-3] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 144 ms
+2026-03-26T09:49:00.023+01:00  INFO 35163 --- [e-shop-backend] [scheduling-1] c.e.e.j.MaterializedViewRefreshScheduler : Refreshing BOOKS_STATS_MV...
+2026-03-26T09:49:00.050+01:00 DEBUG 35163 --- [e-shop-backend] [scheduling-1] org.hibernate.SQL                        : refresh materialized view books_stats_view
+2026-03-26T09:49:00.053+01:00  INFO 35163 --- [e-shop-backend] [scheduling-1] c.e.e.j.MaterializedViewRefreshScheduler : BOOKS_STATS_MV successfully refreshed.
+2026-03-26T09:50:00.007+01:00  INFO 35163 --- [e-shop-backend] [scheduling-1] c.e.e.j.MaterializedViewRefreshScheduler : Refreshing BOOKS_STATS_MV...
+2026-03-26T09:50:00.009+01:00 DEBUG 35163 --- [e-shop-backend] [scheduling-1] org.hibernate.SQL                        : refresh materialized view books_stats_view
+2026-03-26T09:50:00.014+01:00  INFO 35163 --- [e-shop-backend] [scheduling-1] c.e.e.j.MaterializedViewRefreshScheduler : BOOKS_STATS_MV successfully refreshed.
+2026-03-26T09:50:34.777+01:00  INFO 35163 --- [e-shop-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-26T09:50:34.777+01:00  INFO 35163 --- [e-shop-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
