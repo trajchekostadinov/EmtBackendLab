@@ -10,6 +10,22 @@ import lombok.*;
 @Setter
 @Entity
 @Table(name = "books")
+
+// lab2 - 3. za entity graph(koga zemas book zemi go i avtor i country vo edno query da nema n+1 query problem)
+@NamedEntityGraph(
+        name = "book-entity-graph",
+        attributeNodes = {
+                @NamedAttributeNode(value = "author", subgraph = "author-subgraph"),
+        },
+        subgraphs = {
+                @NamedSubgraph(
+                        name = "author-subgraph",
+                        attributeNodes = {
+                                @NamedAttributeNode("country")
+                        }
+                )
+        }
+)
 public class Book extends BaseAuditableEntity {
 
     private String name;
