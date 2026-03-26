@@ -22,7 +22,6 @@ public interface BookService {
 
     Optional<Book> rent(Long id);
 
-    // lab2 - 1. za pagination
     Page<DisplayBookListDto> findAll(int page, int size, String sortBy);
 
     Page<DisplayBookListDto> listBooks(

@@ -88,7 +88,6 @@ public class BookController {
         return bookService.listBooks(category, state, authorName, available, page, size, sortBy);
     }
 
-    //lab2 3.Entity-graph
     @GetMapping("/entity-graph")
     public List<Book> getBooks() {
         return bookRepository.findAll();
@@ -110,7 +109,6 @@ public class BookController {
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
-    //lab2 2.projection
     @GetMapping("/short")
     public List<BookShortProjection> getShortBooks() {
         return bookRepository.findAllShortBy();

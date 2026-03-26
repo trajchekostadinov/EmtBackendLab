@@ -19,7 +19,6 @@ public class BookViewController {
         this.bookViewApplicationService = bookViewApplicationService;
     }
 
-    // lab2 - 4. za database view
     @GetMapping()
     public ResponseEntity<List<DisplayBookViewDto>> findAll(){
         return ResponseEntity.ok(bookViewApplicationService.findAll());

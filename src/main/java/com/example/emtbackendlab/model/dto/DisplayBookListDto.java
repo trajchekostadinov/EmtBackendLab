@@ -4,7 +4,6 @@ import com.example.emtbackendlab.model.enumeration.BookCategory;
 import com.example.emtbackendlab.model.enumeration.BookState;
 
 
-// lab2 - 1. za pagination
 public record DisplayBookListDto(
         Long id,
         String name,
