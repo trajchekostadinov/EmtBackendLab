@@ -1,12 +1,14 @@
 package com.example.emtbackendlab.service.application.Impl;
 import com.example.emtbackendlab.model.domain.Author;
 import com.example.emtbackendlab.model.dto.CreateBookDto;
+import com.example.emtbackendlab.model.dto.DisplayBookDetailsDto;
 import com.example.emtbackendlab.model.dto.DisplayBookDto;
 import com.example.emtbackendlab.model.exception.AuthorNotFoundException;
 import org.springframework.stereotype.Service;
 import com.example.emtbackendlab.service.application.BookApplicationService;
 import com.example.emtbackendlab.service.domain.AuthorService;
 import com.example.emtbackendlab.service.domain.BookService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -66,5 +68,13 @@ public class BookApplicationServiceImpl implements BookApplicationService {
         return bookService
                 .rent(id)
                 .map(DisplayBookDto::from);
+    }
+
+    @Override
+    public Optional<DisplayBookDetailsDto> findWithDetailsById(Long id) {
+        return bookService
+                .findById(id)
+                .map(DisplayBookDetailsDto::from);
+
     }
 }

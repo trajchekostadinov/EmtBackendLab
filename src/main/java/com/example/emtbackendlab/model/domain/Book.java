@@ -5,13 +5,14 @@ import com.example.emtbackendlab.model.enumeration.BookState;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "books")
 
-// lab2 - 3. za entity graph(koga zemas book zemi go i avtor i country vo edno query da nema n+1 query problem)
 @NamedEntityGraph(
         name = "book-entity-graph",
         attributeNodes = {
@@ -41,10 +42,21 @@ public class Book extends BaseAuditableEntity {
     @Column(nullable = false)
     private Integer availableCopies;
 
+    @Column(name = "date_published")
+    private LocalDateTime datePublished;
+
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
 
+    public Book(String name, BookCategory category, BookState state, Integer availableCopies, Author author,LocalDateTime datePublished) {
+        this.name = name;
+        this.category = category;
+        this.state = state;
+        this.availableCopies = availableCopies;
+        this.author = author;
+        this.datePublished = datePublished;
+    }
     public Book(String name, BookCategory category, BookState state, Integer availableCopies, Author author) {
         this.name = name;
         this.category = category;
@@ -52,4 +64,6 @@ public class Book extends BaseAuditableEntity {
         this.availableCopies = availableCopies;
         this.author = author;
     }
+
+
 }
