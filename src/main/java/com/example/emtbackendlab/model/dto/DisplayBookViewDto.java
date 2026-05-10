@@ -3,7 +3,6 @@ package com.example.emtbackendlab.model.dto;
 import com.example.emtbackendlab.model.views.BookView;
 import java.util.List;
 
-// lab2 - 4. za database view
 public record DisplayBookViewDto(
         Long id,
         String name,

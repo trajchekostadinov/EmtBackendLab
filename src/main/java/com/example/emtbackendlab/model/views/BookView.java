@@ -5,7 +5,6 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import org.hibernate.annotations.Immutable;
 
-// lab2 - 4. za database view
 @Entity
 @Getter
 @Immutable // ova znaci samo read-only. Nemoze insert/update/delete da se pravi

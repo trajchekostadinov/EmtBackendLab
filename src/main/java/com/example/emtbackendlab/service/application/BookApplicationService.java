@@ -1,6 +1,7 @@
 package com.example.emtbackendlab.service.application;
 
 import com.example.emtbackendlab.model.dto.CreateBookDto;
+import com.example.emtbackendlab.model.dto.DisplayBookDetailsDto;
 import com.example.emtbackendlab.model.dto.DisplayBookDto;
 
 import java.util.List;
@@ -17,5 +18,6 @@ public interface BookApplicationService {
 
     Optional<DisplayBookDto> deleteById(Long id);
     Optional<DisplayBookDto> rent(Long id);
+    Optional<DisplayBookDetailsDto> findWithDetailsById(Long id);
 
 }

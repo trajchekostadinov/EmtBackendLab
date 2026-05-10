@@ -8,14 +8,6 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-// lab2 - 9. evidencija na aktivnosti
-
-/*
-    id
-    име на книгата
-    време на настанот
-    тип на настан
- */
 
 @Entity
 @Getter

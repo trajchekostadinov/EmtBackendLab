@@ -5,14 +5,18 @@ import com.example.emtbackendlab.model.enumeration.BookCategory;
 import com.example.emtbackendlab.model.enumeration.BookState;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDateTime;
+
 public record CreateBookDto(
         @NotBlank String name,
         @NotNull BookCategory category,
         @NotNull BookState state,
         @NotNull Integer availableCopies,
-        @NotNull Long authorId
+        @NotNull Long authorId,
+        LocalDateTime datePublished
 ) {
     public Book toBook(Author author) {
-        return new Book(name, category, state, availableCopies, author);
+        return new Book(name, category, state, availableCopies, author,datePublished);
     }
 }

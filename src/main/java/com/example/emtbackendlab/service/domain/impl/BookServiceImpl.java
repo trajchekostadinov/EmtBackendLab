@@ -89,7 +89,6 @@ public class BookServiceImpl implements BookService {
                 .orElse(0);
     }
 
-    // lab2 - 1. za pagination
     @Override
     public Page<DisplayBookListDto> findAll(int page, int size, String sortBy) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));

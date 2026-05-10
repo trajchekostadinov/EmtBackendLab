@@ -1,14 +1,13 @@
 package com.example.emtbackendlab.service.application.Impl;
-
-import com.example.emtbackendlab.model.domain.Author;
 import com.example.emtbackendlab.model.domain.Country;
 import com.example.emtbackendlab.model.dto.CreateAuthorDto;
+import com.example.emtbackendlab.model.dto.DisplayAuthorDetailsDto;
 import com.example.emtbackendlab.model.dto.DisplayAuthorDto;
 import com.example.emtbackendlab.model.exception.CountryNotFoundException;
 import com.example.emtbackendlab.repository.CountryRepository;
-import org.springframework.stereotype.Service;
 import com.example.emtbackendlab.service.application.AuthorApplicationService;
 import com.example.emtbackendlab.service.domain.AuthorService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -61,5 +60,12 @@ public class AuthorApplicationServiceImpl implements AuthorApplicationService {
         return authorService
                 .deleteById(id)
                 .map(DisplayAuthorDto::from);
+    }
+
+    @Override
+    public Optional<DisplayAuthorDetailsDto> findWithDetailsById(Long id) {
+        return authorService
+                .findById(id)
+                .map(DisplayAuthorDetailsDto::from);
     }
 }

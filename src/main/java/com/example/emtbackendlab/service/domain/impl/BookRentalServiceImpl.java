@@ -10,10 +10,8 @@ import com.example.emtbackendlab.service.domain.BookRentalService;
 import org.springframework.stereotype.Service;
 
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-// lab2 - 7. za event handling pri iznajmuvanje kniga
 @Service
 public class BookRentalServiceImpl implements BookRentalService {
 
@@ -38,10 +36,8 @@ public class BookRentalServiceImpl implements BookRentalService {
         book.setAvailableCopies(book.getAvailableCopies() - 1);
         bookRepository.save(book);
 
-        // lab2 - 7. za event handling pri iznajmuvanje kniga
         applicationEventPublisher.publishEvent(new BookRentedEvent(book, rentedBy));
 
-//         lab2 - 8. za listener za nedostapni knigi
         if (book.getAvailableCopies() == 0){
             applicationEventPublisher.publishEvent(new BookUnavailableEvent(book, rentedBy));
         }

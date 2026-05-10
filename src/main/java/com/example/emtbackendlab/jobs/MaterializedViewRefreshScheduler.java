@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-// lab2 - 6. za schedule event za materialized view
 @Component
 @Slf4j
 public class MaterializedViewRefreshScheduler {
@@ -17,7 +16,7 @@ public class MaterializedViewRefreshScheduler {
         this.bookStatsViewRepository = bookStatsViewRepository;
     }
 
-    @Scheduled(cron = "0 * * * * *") //ke se refreshira ->
+    @Scheduled(cron = "0 * * * * *") //ke se refreshira na ->
     @Transactional
     public void refreshBooksStatsView() {
         log.info("Refreshing BOOKS_STATS_MV...");

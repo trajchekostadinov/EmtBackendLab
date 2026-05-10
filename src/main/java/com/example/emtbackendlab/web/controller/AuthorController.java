@@ -1,6 +1,7 @@
 package com.example.emtbackendlab.web.controller;
 
 import com.example.emtbackendlab.model.dto.CreateAuthorDto;
+import com.example.emtbackendlab.model.dto.DisplayAuthorDetailsDto;
 import com.example.emtbackendlab.model.dto.DisplayAuthorDto;
 import com.example.emtbackendlab.service.application.AuthorApplicationService;
 import jakarta.validation.Valid;
@@ -23,6 +24,14 @@ public class AuthorController {
     public ResponseEntity<DisplayAuthorDto> findById(@PathVariable Long id){
         return authorApplicationService
                 .findById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/{id}/details")
+    public ResponseEntity<DisplayAuthorDetailsDto> findWithDetailsById(@PathVariable Long id) {
+        return authorApplicationService
+                .findWithDetailsById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

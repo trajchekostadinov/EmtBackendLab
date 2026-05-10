@@ -1,6 +1,7 @@
 package com.example.emtbackendlab.service.application;
 
 import com.example.emtbackendlab.model.dto.CreateAuthorDto;
+import com.example.emtbackendlab.model.dto.DisplayAuthorDetailsDto;
 import com.example.emtbackendlab.model.dto.DisplayAuthorDto;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface AuthorApplicationService {
     Optional<DisplayAuthorDto> update(Long id, CreateAuthorDto createAuthorDto);
 
     Optional<DisplayAuthorDto> deleteById(Long id);
+    Optional<DisplayAuthorDetailsDto> findWithDetailsById(Long id);
 }

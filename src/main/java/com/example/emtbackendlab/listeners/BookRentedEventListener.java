@@ -11,7 +11,6 @@ import org.springframework.transaction.event.TransactionalEventListener;
 
 import java.time.LocalDateTime;
 
-// lab2 - 7. za event handling pri iznajmuvanje kniga
 @Component
 @Slf4j
 public class BookRentedEventListener {
@@ -30,7 +29,6 @@ public class BookRentedEventListener {
                 event.book().getName(),
                 event.rentedBy());
 
-        // lab2 - 9. evidencija na aktivnosti
         ActivityLog logEntry = new ActivityLog(
                 event.book().getName(),
                 LocalDateTime.now(),
