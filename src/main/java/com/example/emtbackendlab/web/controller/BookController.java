@@ -7,6 +7,7 @@ import com.example.emtbackendlab.model.dto.DisplayBookDto;
 import com.example.emtbackendlab.model.dto.DisplayBookListDto;
 import com.example.emtbackendlab.model.enumeration.BookCategory;
 import com.example.emtbackendlab.model.enumeration.BookState;
+import com.example.emtbackendlab.model.enumeration.State;
 import com.example.emtbackendlab.model.projection.BookDetailedProjection;
 import com.example.emtbackendlab.model.projection.BookShortProjection;
 import com.example.emtbackendlab.repository.BookRepository;
@@ -18,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/books")
@@ -49,9 +51,21 @@ public class BookController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping
-    public ResponseEntity<List<DisplayBookDto>> findAll(){
-        return ResponseEntity.ok(bookApplicationService.findAll());
+//    @GetMapping
+//    public ResponseEntity<List<DisplayBookDto>> findAll(){
+//        return ResponseEntity.ok(bookApplicationService.findAll());
+//    }
+
+    //dopolnitelno
+    @GetMapping()
+    public List<Book> findAll(
+            @RequestParam(required = false) BookState state
+    ) {
+        if (state != null) {
+            return bookService.filterByState(state);
+        }
+
+        return bookService.findAll();
     }
 
     @PostMapping("/add")
@@ -87,7 +101,6 @@ public class BookController {
     }
 
 
-    // lab2 - 1. za pagination
     @GetMapping("/paginated")
     public ResponseEntity<Page<DisplayBookListDto>> findAll(
             @RequestParam(defaultValue = "0") int page,

@@ -4,6 +4,7 @@ import com.example.emtbackendlab.model.domain.Book;
 import com.example.emtbackendlab.model.dto.DisplayBookListDto;
 import com.example.emtbackendlab.model.enumeration.BookCategory;
 import com.example.emtbackendlab.model.enumeration.BookState;
+import com.example.emtbackendlab.model.enumeration.State;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -19,6 +20,9 @@ public interface BookService {
     Optional<Book> update(Long id, Book book);
 
     Optional<Book> deleteById(Long id);
+
+    //dopolnitelno
+    List<Book> filterByState(BookState state);
 
     Optional<Book> rent(Long id);
 

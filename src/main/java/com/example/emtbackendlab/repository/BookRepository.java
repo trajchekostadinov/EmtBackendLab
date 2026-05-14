@@ -3,6 +3,7 @@ package com.example.emtbackendlab.repository;
 import com.example.emtbackendlab.model.domain.Book;
 import com.example.emtbackendlab.model.enumeration.BookCategory;
 import com.example.emtbackendlab.model.enumeration.BookState;
+import com.example.emtbackendlab.model.enumeration.State;
 import com.example.emtbackendlab.model.projection.BookDetailedProjection;
 import com.example.emtbackendlab.model.projection.BookShortProjection;
 import org.springframework.data.domain.Page;
@@ -12,6 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book,Long> {
@@ -34,4 +36,7 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     // lab2 - 2. za projections
     List<BookShortProjection> findAllShortBy();
     List<BookDetailedProjection> findAllDetailedBy();
+
+    //dopolnitelno
+    List<Book> findByState(BookState state);
 }

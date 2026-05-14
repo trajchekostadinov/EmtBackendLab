@@ -4,6 +4,7 @@ import com.example.emtbackendlab.model.domain.Book;
 import com.example.emtbackendlab.model.dto.DisplayBookListDto;
 import com.example.emtbackendlab.model.enumeration.BookCategory;
 import com.example.emtbackendlab.model.enumeration.BookState;
+import com.example.emtbackendlab.model.enumeration.State;
 import com.example.emtbackendlab.model.exception.BookNotAvailableException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -93,6 +94,11 @@ public class BookServiceImpl implements BookService {
     public Page<DisplayBookListDto> findAll(int page, int size, String sortBy) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         return bookRepository.findAll(pageable).map(DisplayBookListDto::from);
+    }
+
+    //dopolnitelno
+    public List<Book> filterByState(BookState state) {
+        return bookRepository.findByState(state);
     }
 
 
